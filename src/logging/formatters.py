@@ -1,7 +1,7 @@
 import json
 import logging
 from datetime import datetime
-
+import traceback
 
 class JsonFormatter(logging.Formatter):
     def format(self, record):
@@ -12,4 +12,7 @@ class JsonFormatter(logging.Formatter):
             "message": record.getMessage(),
         }
 
+        if record.exc_info:
+            log_data["traceback"] = traceback.format_exception(*record.exc_info)
+    
         return json.dumps(log_data)

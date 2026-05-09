@@ -1,11 +1,11 @@
 import logging
 
 
-def setup_logger(name: str = "ai-logmon"):
+def setup_logger(name: str = "ai-logmon", level=logging.INFO):
     logger = logging.getLogger(name)
 
     if not logger.handlers:
-        logger.setLevel(logging.INFO)
+        logger.setLevel(level)
 
         handler = logging.StreamHandler()
 

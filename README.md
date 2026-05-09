@@ -60,6 +60,26 @@ log_processor.start()
 error_reporter.start()
 ```
 
+## Structured Logging Example
+
+```python
+from src.logging import StructuredLogger
+
+logger = StructuredLogger()
+
+logger.log_inference_start(
+    model_name="llama3",
+    request_id="req-001",
+)
+
+logger.log_inference_end(
+    model_name="llama3",
+    request_id="req-001",
+    latency_ms=120,
+    token_count=256,
+)
+```
+
 ## Configuration
 
 The library provides a range of configuration options to customize logging and error reporting behavior. These options can be specified in the `config.json` file.

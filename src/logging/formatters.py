@@ -10,6 +10,7 @@ class JsonFormatter(logging.Formatter):
             "level": record.levelname,
             "logger": record.name,
             "message": record.getMessage(),
+            "request_id": getattr(record, "request_id", None),
             "inference_id": getattr(record, "inference_id", None),
             "model_name": getattr(record, "model_name", None),
             "latency_ms": getattr(record, "latency_ms", None),

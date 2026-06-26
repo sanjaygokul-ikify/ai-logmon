@@ -1,2 +1,2 @@
-python>=3.8
 loguru
+flask>=3.0

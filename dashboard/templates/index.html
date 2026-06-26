@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI LogMon — Real-time monitoring dashboard for AI system logs and error reports.">
+    <title>AI LogMon — Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header__title">
+            <span class="header__logo">📊</span>
+            AI Log Dashboard
+        </div>
+        <div class="header__right">
+            <div class="health-indicator">
+                <span class="health-dot" id="health-dot"></span>
+                <span id="health-text">Healthy</span>
+            </div>
+            <span class="last-updated" id="last-updated">Updated just now</span>
+        </div>
+    </header>
+    <main class="container">
+        <section class="stats-grid">
+            <div class="stat-card stat-card--total">
+                <div class="stat-card__icon">📋</div>
+                <div class="stat-card__value" id="stat-total">0</div>
+                <div class="stat-card__label">Total Logs</div>
+            </div>
+            <div class="stat-card stat-card--warn">
+                <div class="stat-card__icon">⚠️</div>
+                <div class="stat-card__value" id="stat-warnings">0</div>
+                <div class="stat-card__label">Warnings</div>
+            </div>
+            <div class="stat-card stat-card--error">
+                <div class="stat-card__icon">🚨</div>
+                <div class="stat-card__value" id="stat-errors">0</div>
+                <div class="stat-card__label">Errors</div>
+            </div>
+        </section>
+        <section class="charts-grid">
+            <div class="chart-card">
+                <h2 class="chart-card__title">Log Level Distribution</h2>
+                <canvas id="level-chart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h2 class="chart-card__title">Recent Error Trend</h2>
+                <canvas id="error-chart"></canvas>
+            </div>
+        </section>
+        <section class="log-section">
+            <div class="section-header">
+                <h2 class="section-header__title">Live Log Feed</h2>
+                <span class="section-header__badge" id="log-count-badge">0 entries</span>
+            </div>
+            <div class="search-box">
+                <span class="search-box__icon">🔍</span>
+                <input type="text" id="log-search" class="search-box__input" placeholder="Search logs by message, source, or level…">
+            </div>
+            <div class="log-table-wrap">
+                <table class="log-table">
+                    <thead>
+                        <tr>
+                            <th class="col-time">Timestamp</th>
+                            <th class="col-level">Level</th>
+                            <th class="col-source">Source</th>
+                            <th class="col-message">Message</th>
+                        </tr>
+                    </thead>
+                    <tbody id="log-table-body">
+                        <tr><td colspan="4" class="empty-state">Loading logs…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="error-section">
+            <div class="section-header">
+                <h2 class="section-header__title">Recent Errors</h2>
+                <span class="section-header__badge" id="error-count-badge">0 errors</span>
+            </div>
+            <ul class="error-list" id="error-list">
+                <li class="empty-state">Loading errors…</li>
+            </ul>
+        </section>
+    </main>
+    <script src="/static/dashboard.js"></script>
+</body>
+</html>
